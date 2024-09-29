@@ -60,4 +60,5 @@ b = int(a) # là ko thể vì có kí tự "aaa" bên trong chuỗi
 
 # Tương tự với khi ép sang float
 ```
+29/09
 
