@@ -23,17 +23,20 @@ while True:
                 todo_list = file.readlines()
                 for index , item in enumerate(todo_list):
                     print("\t",index + 1, ". ", item.capitalize(), end = '')
+
         case "edit":
             todo_list = []
-            with open("file_todo_list.txt", "r") as file:
+            with open("./output/file_todo_list.txt", "r") as file:
                 todo_list = file.readlines()
                 for index , item in enumerate(todo_list):
-                    print("/t",index + 1, ". ", item.capitalize())
+                    print("\t",index + 1, ". ", item.capitalize(), end = '')
 
-            num = input("select the number you want to edit: ")
-            with open("file_todo_list.txt", "w") as file:
-                todo_list[num-1] = input("Enter new thing todo: ")
+            num = int(input("select the number you want to edit: "))
+            
+            with open("./output/file_todo_list.txt", "w") as file:
+                todo_list[num- 1] = (input("Enter new thing todo: ") + "\n")
                 file.writelines(todo_list)
+
         case "completed":
             pass
         case "exit":

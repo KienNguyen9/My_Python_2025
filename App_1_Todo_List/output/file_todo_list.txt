@@ -1,7 +1,5 @@
-Eat
-drink
-Sleep
-Eat
+eat 
 Drink
 Sleep
-Date
+exercise
+Do laundry
