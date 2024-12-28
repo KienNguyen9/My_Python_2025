@@ -1,0 +1,4 @@
+@ECHO OFF
+DIR
+PAUSE
+
