@@ -4,26 +4,25 @@ Author: Kien Nguyen
 """
 
 while True:
-    user_action = input("Type add, show, edit, completed or exit.").strip()
+    user_action = input("Type add, show, edit, completed or exit: ").strip()
     match user_action:
         case "add":
-            try:
-                lines = []
-                with open(r"./output/file_todo_list.txt", "r", encoding = "utf-8    ") as file:
-                    lines = file.readlines() 
-                new_task = input("Enter new task: ").capitalize().strip() + "\n"
-                lines.append(new_task)
-                with open(r"./output/file_todo_list.txt", "w", encoding = "utf-8    ") as file:
-                    file.writelines(lines)              
-            except Exception as e:
-                print(f"An error occurred: {e}")
+            lines = []
+            with open(r"./output/file_todo_list.txt", "r", encoding = "utf-8    ") as file:
+                lines = file.readlines() 
+            new_task = input("Enter new task: ").capitalize().strip() + "\n"
+            lines.append(new_task)
+            with open(r"./output/file_todo_list.txt", "w", encoding = "utf-8    ") as file:
+                file.writelines(lines)              
 
         case "show":
-            with open("./output/file_todo_list.txt","r") as file:
-                todo_list = file.readlines()
+            try: 
+                with open("./output/file_todo_list.txt","r") as file:
+                    todo_list = file.readlines()
                 for index , item in enumerate(todo_list):
                     print("\t",index + 1, ". ", item.capitalize(), end = '')
-
+            except:
+                print("Chua co du lieu!")
         case "edit":
             todo_list = []
             with open("./output/file_todo_list.txt", "r") as file:
