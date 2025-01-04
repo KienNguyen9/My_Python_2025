@@ -5,11 +5,14 @@ Author: Kien Nguyen
 import os
 
 def print_out_list_of_task(lines_list):
-    print("--- List of existing task ---")
-    for index, element in enumerate(lines_list):
-        print(f"\t{index+1}. {element.capitalize()}", end="")
-    print("-------- End of List --------")
-
+    if lines_list != []:
+        print("--- List of existing task ---")
+        for index, element in enumerate(lines_list):
+            print(f"\t{index+1}. {element.capitalize()}", end="")
+        print("-------- End of List --------")
+    else: 
+        print("--- There is nothing to do now ---")
+        
 # Output folder path.
 output_folder_path = r"./output"
 
@@ -56,17 +59,26 @@ while True:
                 todo_list[num- 1] = (input("Enter new thing todo: ") + "\n")
                 file.writelines(todo_list)
         case "completed":
+            
+
             # Show the list
             with open("./output/file_todo_list.txt", "r") as file:
                 todo_list = file.readlines()
+                if todo_list == []:
+                    print("--- There is nothing to do now ---")
+                    continue
                 print_out_list_of_task(todo_list)
             
             done = int(input("Enter number of completed task: "))
-            todo_list.pop(done-1)
+            
+            thing_completed = todo_list.pop(done-1)[:-1]
 
             with open("./output/file_todo_list.txt", "w") as file:
                 file.writelines(todo_list)
-            
+
+            message = f"The task '{thing_completed}' was done."
+            print(message)
+
         case "exit":
             break
 
