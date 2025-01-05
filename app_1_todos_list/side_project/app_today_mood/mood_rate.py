@@ -8,4 +8,6 @@ if not os.path.exists(out_put_path):
     os.mkdir(out_put_path)
 
 with open(f"./journal/{date}.txt", "w") as file:
+    file.write(mood+"\n"*2)
     file.write(journal)
+    print("Done") 
