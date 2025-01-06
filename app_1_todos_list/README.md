@@ -21,6 +21,7 @@ This application has the following main features:
     Modify the content of a task by index number
     
 4. Completed
+
     Remove the task was done 
 
 5. Exit
