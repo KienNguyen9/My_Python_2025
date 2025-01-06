@@ -11,7 +11,7 @@ def print_out_list_of_task(lines_list):
             print(f"\t{index+1}. {element.capitalize()}", end="")
         print("-------- End of List --------")
     else: 
-        print("--- There is nothing to do now ---")
+        print("--- There is no task for now ---")
         
 # Output folder path.
 output_folder_path = r"./output"
@@ -32,9 +32,6 @@ while True:
                 lines = file.readlines() 
         except FileNotFoundError:
             lines = []
-        
-        # Show the list of task        
-        # print_out_list_of_task(lines)
 
         # new_task = input("Enter new task: ").capitalize().strip() + "\n"
         if user_action.strip().lower() == 'add':
@@ -49,21 +46,31 @@ while True:
         with open(r"./output/file_todo_list.txt", "w", encoding = "utf-8    ") as file:
             file.writelines(lines)              
 
+        # Show the list of task        
+        print_out_list_of_task(lines)
+
     elif "show" in user_action:
         try: 
             with open("./output/file_todo_list.txt","r") as file:
                 todo_list = file.readlines()
             print_out_list_of_task(todo_list)
         except:
-            print("Chua co du lieu!")
+            print("--- There is no task for now ---")
 
     elif "edit" in user_action:
+        
         todo_list = []
-        with open("./output/file_todo_list.txt", "r") as file:
-            todo_list = file.readlines()
-            for index , item in enumerate(todo_list):
-                print("\t",index + 1, ". ", item.capitalize(), end = '')
+        try:
+            with open("./output/file_todo_list.txt", "r") as file:
+                todo_list = file.readlines()
+                for index , item in enumerate(todo_list):
+                    print("\t",index + 1, ". ", item.capitalize(), end = '')
+        except:
+            print("--- There is no task for now ---")
+            continue
+            
         num = int(input("select the number you want to edit: "))
+        
         with open("./output/file_todo_list.txt", "w") as file:
             todo_list[num- 1] = (input("Enter new thing todo: ") + "\n")
             file.writelines(todo_list)
