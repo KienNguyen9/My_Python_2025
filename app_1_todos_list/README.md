@@ -8,19 +8,23 @@ This application has the following main features:
 - Exit 
 
 ## Specific feature:
-1. Add:\n
+1. Add
+
     Add one more task to the list and save them to a text file in the `./output/file_todo_list.txt` file.
     
-2. Show:\n
+2. Show
+
     Print out all of tasks 
 
-3. Edit:\n
+3. Edit
+
     Modify the content of a task by index number
     
 4. Completed
     Remove the task was done 
 
-5. Exit:\n
+5. Exit
+
     Exit the program
 
 
