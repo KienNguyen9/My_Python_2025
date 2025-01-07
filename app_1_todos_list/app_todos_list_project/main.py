@@ -58,7 +58,6 @@ while True:
             print("--- There is no task for now ---")
 
     elif "edit" in user_action:
-        
         todo_list = []
         try:
             with open("./output/file_todo_list.txt", "r") as file:
@@ -76,12 +75,17 @@ while True:
             file.writelines(todo_list)
 
     elif "completed" in user_action:
-        with open("./output/file_todo_list.txt", "r") as file:
-            todo_list = file.readlines()
-            if todo_list == []:
-                print("--- There is nothing to do now ---")
-                continue
-            print_out_list_of_task(todo_list)
+        try: 
+            with open("./output/file_todo_list.txt", "r") as file:
+                todo_list = file.readlines()
+                if todo_list == []:
+                    print("--- There is nothing to do now ---")
+                    continue
+                print_out_list_of_task(todo_list)
+        except:
+            print("--- There is no task for now ---")
+            continue
+
         done = int(input("Enter number of completed task: "))
         thing_completed = todo_list.pop(done-1)[:-1]
         with open("./output/file_todo_list.txt", "w") as file:
@@ -92,6 +96,7 @@ while True:
     elif "exit" in user_action:
         break
 
+print('Good bye, see you later!')
 
 
 
