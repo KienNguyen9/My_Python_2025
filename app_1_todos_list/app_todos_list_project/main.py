@@ -13,8 +13,11 @@ def print_out_list_of_task(lines_list):
     else: 
         print("--- There is no task for now ---")
         
+current_path = os.path.abspath(__file__)
+print(current_path)
+
 # Output folder path.
-output_folder_path = r"./output"
+output_folder_path = r"./output/"
 
 # Create output if it doesn't exist.
 if not os.path.exists(output_folder_path):
@@ -34,7 +37,7 @@ while True:
             lines = []
 
         # new_task = input("Enter new task: ").capitalize().strip() + "\n"
-        if user_action.strip().lower() == 'add':
+        if user_action.strip().lower() == 'add ':
             new_task = input("Enter new task: ").capitalize().strip() + "\n"
         else:
             new_task = user_action.replace('add', '').strip() + "\n" 
@@ -67,10 +70,18 @@ while True:
         except:
             print("--- There is no task for now ---")
             continue
-            
-        num = int(input("select the number you want to edit: "))
         
-        with open("./output/file_todo_list.txt", "w") as file:
+        if user_action.lower().strip().startswith("edit "):
+            task_edit = user_action[:4] 
+            with open("./output/file_todo_list.txt", "w") as file:
+                old_task = todo_list[num- 1]
+                todo_list[num- 1] = task_edit
+                file.writelines(todo_list)
+                print(f"'{old_task}' was updated by '{task_edit}'.")
+        else:
+            num = int(input("Select the number you want to edit: "))
+        
+        with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
             todo_list[num- 1] = (input("Enter new thing todo: ") + "\n")
             file.writelines(todo_list)
 
@@ -95,6 +106,8 @@ while True:
 
     elif "exit" in user_action:
         break
+    else:
+        print("Command is not valid.")
 
 print('Good bye, see you later!')
 
