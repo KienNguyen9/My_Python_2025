@@ -49,7 +49,6 @@ while True:
         # Write to file
         with open(r"./output/file_todo_list.txt", "w", encoding = "utf-8") as file:
             file.writelines(lines)              
-
         # Show the list of task        
         print_out_list_of_task(lines)
 
@@ -60,7 +59,7 @@ while True:
             print_out_list_of_task(todo_list)
         except:
             print("--- There is no task for now ---")
-
+        
     elif "edit" in user_action:
         # todo_list = []
         # try:
@@ -86,19 +85,28 @@ while True:
         # with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
         #     todo_list[num- 1] = (input("Enter new thing todo: ") + "\n")
         #     file.writelines(todo_list)
+        index_num = int(user_action[5:]) - 1        
         
-        index_num = int(user_action[5:]) - 1
+        try:
+            with open("./output/file_todo_list.txt", "r", encoding="utf-8") as file:
+                todos = file.readlines()
+                if todo_list == []:
+                    print("--- There is no task for edit ---")
+                    continue
+                # for index , item in enumerate(todo_list):
+                #     print("\t",index + 1, ". ", item.capitalize(), end = '')
+        except:
+            print("--- There is no task for now ---")
+            continue
         
         print(index_num)
-        with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
-            todos = file.readlines()
-        
+        # with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
+        #     todos = file.readlines()        
+
         new_todo = input("Enter you new todo: ")    
-        todos[index_num] = new_todo + "\n"
-        
+        todos[index_num] = new_todo + "\n"        
         with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
-            file.writelines(todos)
- 
+            file.writelines(todos) 
     elif "completed" in user_action:
         # try: 
         #     with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
