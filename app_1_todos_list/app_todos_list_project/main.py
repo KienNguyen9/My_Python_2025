@@ -91,32 +91,38 @@ while True:
         
         print(index_num)
         with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
-            todo = file.readlines()
+            todos = file.readlines()
         
         new_todo = input("Enter you new todo: ")    
-        todo[index_num] = new_todo + "\n"
+        todos[index_num] = new_todo + "\n"
         
         with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
-            file.writelines(todo)
+            file.writelines(todos)
  
     elif "completed" in user_action:
-        try: 
-            with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
-                todo_list = file.readlines()
-                if todo_list == []:
-                    print("--- There is nothing to do now ---")
-                    continue
-                print_out_list_of_task(todo_list)
-        except:
-            print("--- There is no task for now ---")
-            continue
+        # try: 
+        #     with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
+        #         todo_list = file.readlines()
+        #         if todo_list == []:
+        #             print("--- There is nothing to do now ---")
+        #             continue
+        #         print_out_list_of_task(todo_list)
+        # except:
+        #     print("--- There is no task for now ---")
+        #     continue
+        # done = int(input("Enter number of completed task: "))
+        # thing_completed = todo_list.pop(done-1)[:-1]
+        # with open("./output/file_todo_list.txt", "w", encoding="utf-8") as file:
+        #     file.writelines(todo_list)
+        # message = f"The task '{thing_completed}' was done."
+        # print(message)
 
-        done = int(input("Enter number of completed task: "))
-        thing_completed = todo_list.pop(done-1)[:-1]
-        with open("./output/file_todo_list.txt", "w", encoding="utf-8") as file:
-            file.writelines(todo_list)
-        message = f"The task '{thing_completed}' was done."
-        print(message)
+        index_number = int(user_action[10:]) - 1
+        with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
+            todos  = file.readlines()
+        todos.pop(index_number)
+        with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
+            file.writelines(todos)
 
     elif "exit" in user_action:
         break
