@@ -62,33 +62,43 @@ while True:
             print("--- There is no task for now ---")
 
     elif "edit" in user_action:
-        todo_list = []
-        try:
-            with open("./output/file_todo_list.txt", "r", encoding="utf-8") as file:
-                todo_list = file.readlines()
-                if todo_list == []:
-                    print("--- There is no task for edit ---")
-                    continue
-                for index , item in enumerate(todo_list):
-                    print("\t",index + 1, ". ", item.capitalize(), end = '')
-        except:
-            print("--- There is no task for now ---")
-            continue
+        # todo_list = []
+        # try:
+        #     with open("./output/file_todo_list.txt", "r", encoding="utf-8") as file:
+        #         todo_list = file.readlines()
+        #         if todo_list == []:
+        #             print("--- There is no task for edit ---")
+        #             continue
+        #         for index , item in enumerate(todo_list):
+        #             print("\t",index + 1, ". ", item.capitalize(), end = '')
+        # except:
+        #     print("--- There is no task for now ---")
+        #     continue
+        # if user_action.lower().strip().startswith("edit"):
+        #     task_edit = user_action[:4] 
+        #     with open("./output/file_todo_list.txt", "w", encoding="utf-8") as file:
+        #         old_task = todo_list[num- 1]
+        #         todo_list[num- 1] = task_edit
+        #         file.writelines(todo_list)
+        #         print(f"'{old_task}' was updated by '{task_edit}'.")
+        # else:
+        #     num = int(input("Select the number you want to edit: "))
+        # with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
+        #     todo_list[num- 1] = (input("Enter new thing todo: ") + "\n")
+        #     file.writelines(todo_list)
         
-        if user_action.lower().strip().startswith("edit"):
-            task_edit = user_action[:4] 
-            with open("./output/file_todo_list.txt", "w", encoding="utf-8") as file:
-                old_task = todo_list[num- 1]
-                todo_list[num- 1] = task_edit
-                file.writelines(todo_list)
-                print(f"'{old_task}' was updated by '{task_edit}'.")
-        else:
-            num = int(input("Select the number you want to edit: "))
+        index_num = int(user_action[5:]) - 1
+        
+        print(index_num)
+        with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
+            todo = file.readlines()
+        
+        new_todo = input("Enter you new todo: ")    
+        todo[index_num] = new_todo + "\n"
         
         with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
-            todo_list[num- 1] = (input("Enter new thing todo: ") + "\n")
-            file.writelines(todo_list)
-
+            file.writelines(todo)
+ 
     elif "completed" in user_action:
         try: 
             with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
