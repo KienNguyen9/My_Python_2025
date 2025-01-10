@@ -1,5 +1,5 @@
 # Boolean operator
-# "and", "or"
+# "and", "or", "not"
 
 while True:
     user_action  = input("Enter your action: ")
