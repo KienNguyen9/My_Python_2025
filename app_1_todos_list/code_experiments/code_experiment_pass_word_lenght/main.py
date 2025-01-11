@@ -1,7 +1,5 @@
 import re
-
 # code experiment 
-# "Strong Pass Word" checking
 prompt_s = "Strong pass word"
 prompt_w = "Weak pass word"
 prompt_n = "Pass word is not valid"
@@ -22,7 +20,6 @@ while True:
         result.append(True)
     else:
         result.append(False)
-            
     
     # Upper case checking
     if any(char.isupper() for char in pass_word):
