@@ -21,12 +21,10 @@ while True:
     if any(char.isupper() for char in pass_word):
         result["Upper"] = True
 
-
+    # Check all conditions
     if all(result.values()) == True:
         print(prompt_s)
         break
-    else:
+    elif any (value == False for value in result.values()):
         print(prompt_w)
         print("Please, try a stronger pass word!")
-
-
