@@ -5,27 +5,28 @@ prompt_w = "Weak pass word"
 prompt_n = "Pass word is not valid"
 
 while True:
-    
-    result = []
+    result = {'Length': False, 'Number': False, 'Upper': False}
+
     pass_word = input("Enter the pass word: ")
     
     # length checking
-    if len(pass_word) < 8:
-        result.append(False)
-    else:
-        result.append(True)
+    if len(pass_word) > 7:
+        result["Length"] = True
     
     # Number checking 
     if any(char.isdigit() for char in pass_word):
-        result.append(True)
-    else:
-        result.append(False)
-    
+        result["Number"] = True
+
     # Upper case checking
     if any(char.isupper() for char in pass_word):
-        result.append(True)
-    else:
-        result.append(False)
+        result["Upper"] = True
 
-    print(result)
+
+    if all(result.values()) == True:
+        print(prompt_s)
+        break
+    else:
+        print(prompt_w)
+        print("Please, try a stronger pass word!")
+
 
