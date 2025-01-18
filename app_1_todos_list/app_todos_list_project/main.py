@@ -26,9 +26,8 @@ if not os.path.exists(output_folder_path):
 while True:
     user_action = input("Type add, show, edit, completed or exit: ").lower().strip()
 
-    if "add" in user_action:
+    if user_action.startswith("add "):
         lines = []
-        
         # When the file wasn't created yet
         try:
             with open(r"./output/file_todo_list.txt", "r", encoding = "utf-8") as file:
@@ -40,7 +39,7 @@ while True:
         if user_action.strip().lower() == 'add':
             new_task = input("Enter new task: ").capitalize().strip() + "\n"
         elif user_action.strip().lower().startswith("add "):
-            new_task = user_action.replace('add', '').strip() + "\n" 
+            new_task = user_action[4:].strip().capitalize() + "\n" 
             
         # Add new task to the list    
         lines.append(new_task)
@@ -52,15 +51,14 @@ while True:
         # Show the list of task        
         print_out_list_of_task(lines)
 
-    elif "show" in user_action:
+    elif user_action.startswith("show"):
         try: 
             with open("./output/file_todo_list.txt", "r", encoding="utf-8") as file:
                 todo_list = file.readlines()
             print_out_list_of_task(todo_list)
         except:
             print("--- There is no task for now ---")
-        
-    elif "edit" in user_action:
+    elif user_action.startswith("edit"):
         # todo_list = []
         # try:
         #     with open("./output/file_todo_list.txt", "r", encoding="utf-8") as file:
@@ -107,7 +105,7 @@ while True:
         todos[index_num] = new_todo + "\n"        
         with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
             file.writelines(todos) 
-    elif "completed" in user_action:
+    elif user_action.startswith("completed"):
         # try: 
         #     with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
         #         todo_list = file.readlines()
@@ -132,7 +130,7 @@ while True:
         with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
             file.writelines(todos)
 
-    elif "exit" in user_action:
+    elif user_action.startswith("exit"):
         break
     else:
         print("Command is not valid.")
