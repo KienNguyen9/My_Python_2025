@@ -1,4 +1,0 @@
-Eat
-run
-drink
-sleep
