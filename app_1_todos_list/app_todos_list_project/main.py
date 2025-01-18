@@ -59,30 +59,6 @@ while True:
         except:
             print("--- There is no task for now ---")
     elif user_action.startswith("edit"):
-        # todo_list = []
-        # try:
-        #     with open("./output/file_todo_list.txt", "r", encoding="utf-8") as file:
-        #         todo_list = file.readlines()
-        #         if todo_list == []:
-        #             print("--- There is no task for edit ---")
-        #             continue
-        #         for index , item in enumerate(todo_list):
-        #             print("\t",index + 1, ". ", item.capitalize(), end = '')
-        # except:
-        #     print("--- There is no task for now ---")
-        #     continue
-        # if user_action.lower().strip().startswith("edit"):
-        #     task_edit = user_action[:4] 
-        #     with open("./output/file_todo_list.txt", "w", encoding="utf-8") as file:
-        #         old_task = todo_list[num- 1]
-        #         todo_list[num- 1] = task_edit
-        #         file.writelines(todo_list)
-        #         print(f"'{old_task}' was updated by '{task_edit}'.")
-        # else:
-        #     num = int(input("Select the number you want to edit: "))
-        # with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
-        #     todo_list[num- 1] = (input("Enter new thing todo: ") + "\n")
-        #     file.writelines(todo_list)
         try:
             index_num = int(user_action[5:]) - 1        
             try:
@@ -105,25 +81,9 @@ while True:
                 file.writelines(todos) 
         except ValueError:
             print("Your command is not valid.")
-            
-    elif user_action.startswith("completed"):
-        # try: 
-        #     with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
-        #         todo_list = file.readlines()
-        #         if todo_list == []:
-        #             print("--- There is nothing to do now ---")
-        #             continue
-        #         print_out_list_of_task(todo_list)
-        # except:
-        #     print("--- There is no task for now ---")
-        #     continue
-        # done = int(input("Enter number of completed task: "))
-        # thing_completed = todo_list.pop(done-1)[:-1]
-        # with open("./output/file_todo_list.txt", "w", encoding="utf-8") as file:
-        #     file.writelines(todo_list)
-        # message = f"The task '{thing_completed}' was done."
-        # print(message)
+            continue
 
+    elif user_action.startswith("completed"):
         index_number = int(user_action[10:]) - 1
         with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
             todos  = file.readlines()
