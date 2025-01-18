@@ -31,3 +31,13 @@
 - So while it is better to get an error as opposed (ngược lại) to having wrong output.
 - Điều này tốt hơn khi nhận một lỗi, so với điều ngược lại là nhận một kết quả sai
 
+- abruptly (adj) đột ngột
+- So to not let the program end abruptly like this
+
+- we will use error handling.
+
+- the number is supposed (giả sử) to come after edit,
+
+- Your command is not valid (có hiệu lực)
+
+- And immediately (ngay lập tức) after that we want to give the user

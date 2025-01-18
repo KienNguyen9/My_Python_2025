@@ -83,28 +83,29 @@ while True:
         # with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
         #     todo_list[num- 1] = (input("Enter new thing todo: ") + "\n")
         #     file.writelines(todo_list)
-        index_num = int(user_action[5:]) - 1        
-        
         try:
-            with open("./output/file_todo_list.txt", "r", encoding="utf-8") as file:
-                todos = file.readlines()
-                if todo_list == []:
-                    print("--- There is no task for edit ---")
-                    continue
-                # for index , item in enumerate(todo_list):
-                #     print("\t",index + 1, ". ", item.capitalize(), end = '')
-        except:
-            print("--- There is no task for now ---")
-            continue
-        
-        print(index_num)
-        # with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
-        #     todos = file.readlines()        
-
-        new_todo = input("Enter you new todo: ")    
-        todos[index_num] = new_todo + "\n"        
-        with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
-            file.writelines(todos) 
+            index_num = int(user_action[5:]) - 1        
+            try:
+                with open("./output/file_todo_list.txt", "r", encoding="utf-8") as file:
+                    todos = file.readlines()
+                    if todo_list == []:
+                        print("--- There is no task for edit ---")
+                        continue
+                    # for index , item in enumerate(todo_list):
+                    #     print("\t",index + 1, ". ", item.capitalize(), end = '')
+            except:
+                print("--- There is no task for now ---")
+                continue
+            print(index_num)
+            # with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
+            #     todos = file.readlines()        
+            new_todo = input("Enter you new todo: ")    
+            todos[index_num] = new_todo + "\n"        
+            with open("./output/file_todo_list.txt", "w", encoding="UTF-8") as file:
+                file.writelines(todos) 
+        except ValueError:
+            print("Your command is not valid.")
+            
     elif user_action.startswith("completed"):
         # try: 
         #     with open("./output/file_todo_list.txt", "r", encoding="UTF-8") as file:
