@@ -41,3 +41,5 @@
 - Your command is not valid (có hiệu lực)
 
 - And immediately (ngay lập tức) after that we want to give the user
+
+- because you don't wanna get confused (bối rối)
