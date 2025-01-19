@@ -43,3 +43,17 @@
 - And immediately (ngay lập tức) after that we want to give the user
 
 - because you don't wanna get confused (bối rối)
+
+- What is the difference between a syntax error and an exception?
+
+- Well, let's suppose that you are sending an email to someone and on your browser, you have a grammar checker.
+
+- So that checker is checking for grammar errors, maybe you forgot a period or you typed.
+ 
+- So from a practical (thực tế) point of view, the difference between syntax errors and exceptions doesn't matter as much 
+- as it matters from the theoretical point of view,
+- so you should be aware (nhận thức) that these differences exist.
+- This way, you have a better understanding of how your programs work.
+- It is beneficial in certain cases,
+- such as in here when you use this "Try Accept" block,
+- and then it has the actual Interpreter which interprets
