@@ -57,3 +57,9 @@
 - It is beneficial in certain cases,
 - such as in here when you use this "Try Accept" block,
 - and then it has the actual Interpreter which interprets
+
+- So far, so good : cho đến nay vẫn tốt     
+- So we were able to successfully use "try" "accept"  to catch a potential(tiềm ẩn, tiêm năng) error that the user might trigger. 
+- would not be able to to handle such a delicate requirement (yêu cầu tế nhị) 
+- But this is an issue. We should handle it in another way.
+- So "if" conditionals (câu điều kiện if) do not catch errors, they check values.
