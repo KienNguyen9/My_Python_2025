@@ -3,26 +3,43 @@ Project: App daily todo list
 Author: Kien Nguyen
 """
 import os
-import functions
 
 current_file_path = os.path.abspath(__file__)
 current_path = os.path.dirname(current_file_path)
 
+# File and folder paths
 ABS_OUTPUT_PATH = current_path + "\\output\\file_todo_list.txt"
-# Output folder path.
 output_folder_path = current_path + "\\output"
+
+
+def print_out_list_of_task(lines_list):
+    if lines_list != []:
+        print("--- List of existing task ---")
+        for index, element in enumerate(lines_list):
+            print(f"\t{index+1}. {element.capitalize()}", end="")
+        print("-------- End of List --------")
+    else: 
+        print("--- There is no task for now ---")
+
+def get_todos_list(output_file_path = ABS_OUTPUT_PATH):    
+    with open(output_file_path, 'r') as file_local:
+        todos_local = file_local.readlines()  
+    return todos_local 
+
+
 
 # Create output if it doesn't exist.
 if not os.path.exists(output_folder_path):
     os.makedirs(output_folder_path)
 while True:
     user_action = input("Type add, show, edit, completed or exit: ").lower().strip()
+    
     # Option 1
     if user_action.startswith("add"):
         lines = []
         # When the file wasn't created yet
         try:
-            lines = functions.get_todos_list(ABS_OUTPUT_PATH)
+            lines = get_todos_list()
         except FileNotFoundError:
             lines = []
 
@@ -39,13 +56,13 @@ while True:
         with open(ABS_OUTPUT_PATH, "w", encoding = "utf-8") as file:
             file.writelines(lines)              
         # Show the list of task        
-        functions.print_out_list_of_task(lines)
+        print_out_list_of_task(lines)
 
     # Option 2
     elif user_action.startswith("show"):
         try: 
-            todos = functions.get_todos_list(ABS_OUTPUT_PATH)
-            functions.print_out_list_of_task(todos)
+            todos = get_todos_list()
+            print_out_list_of_task(todos)
         except:
             print("--- There is no task for now ---")
 
@@ -54,7 +71,7 @@ while True:
         try:
             index_num = int(user_action[5:]) - 1        
             try:
-                todos = functions.get_todos_list(ABS_OUTPUT_PATH)
+                todos = get_todos_list()
                 if todos == []:
                     print("--- There is no task for edit ---")
                     continue
@@ -75,7 +92,7 @@ while True:
     elif user_action.startswith("completed"):
         try:
             index_number = int(user_action[10:]) - 1
-            todos  = functions.get_todos_list(ABS_OUTPUT_PATH)
+            todos  = get_todos_list()
             todos.pop(index_number)
 
             with open(ABS_OUTPUT_PATH, "w", encoding="UTF-8") as file:
